@@ -1,0 +1,43 @@
+id = "world_play_time"
+name = "World Play Time"
+version = "1.0.0"
+description = """A Rust port of [World Play Time](https://github.com/Khajiitos/WorldPlayTime)
+(Khajiitos, MIT): play time shown on the world and server selection lists,
+carried 1:1.
+
+The 1:1 core runs inside the mod API wiring: the config model (six entries
+exactly as upstream's annotated `WPTConfig`, persisted as JSON at
+`config/worldplaytime/config.json`), the server play time manager (per-server
+tick counter persisted next to the game data), the client tick handler (one
+tick per tick on a server, autosave every 6000 ticks), the play time formatter
+(the `worldplaytime.format` string, `%.1f` hours under 100 and whole hours
+from 100 up) and the world-stats reader (upstream's `LevelStorageSourceMixin`
+summing `minecraft:custom`/`minecraft:play_time` across a level's stats
+files).
+
+The two boolean config entries are registered as settings so Horizon's
+Options > Mods page holds them; the position and color entries have no
+matching setting kind in the pinned API, so they live in the config file
+exactly as upstream's file holds them.
+
+The on-screen render half (entry render hooks for the world and server lists,
+the icon blit and the font width) waits on a render and list-entry surface the
+pinned mod API has not got.
+
+Pinned to Horizon f00125f61f794aaa3d4e950d301f353b35b6ee3d and
+horizon-mixins e59da9094f0c2fdda6c627fe9eff22dec6a906f0; exact 1:1 Rust port
+tested against those revisions.
+
+Licence: MIT. Upstream (c) Khajiitos.
+Source: https://github.com/Sparticle62ops/horizon-world-play-time
+"""
+authors = ["Khajiitos", "sparticle"]
+license = "MIT"
+homepage = "https://github.com/Sparticle62ops/horizon-world-play-time"
+api = "0.2"
+side = "client"
+
+[native]
+game = "26.3"
+horizon = "f00125f61f794aaa3d4e950d301f353b35b6ee3d"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
