@@ -35,6 +35,7 @@ authors = ["Khajiitos", "sparticle"]
 license = "MIT"
 homepage = "https://github.com/Sparticle62ops/horizon-world-play-time"
 api = "0.2"
+capabilities = ["registries"]
 side = "client"
 
 [native]
